@@ -32,6 +32,7 @@ try {
 } 
 
 catch (error) {
+    document.getElementById("coins").innerHTML = accounting.formatMoney(0);
     console.log(error);
 }
 
@@ -196,7 +197,7 @@ window.setInterval(function () {
 
 window.setInterval(function () {
 
-    console.log("I save now");
+    //console.log("I save now");
     
     save = {
         coins: coins,
@@ -208,7 +209,7 @@ window.setInterval(function () {
         toAtlantis: toAtlantis
     }
     
-    console.log(save);
+    //console.log(save);
 
       localStorage.setItem("save", JSON.stringify(save));
 }, 10000);
