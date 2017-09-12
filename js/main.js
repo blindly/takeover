@@ -69,21 +69,17 @@ try {
     document.getElementById("toAfricaCost").innerHTML = accounting.formatMoney(africaCost);
     revenueGeneration(toAfrica, toAfricaRevenue, 'toAfricaRevenue');
 
-
     var asiaCost = Math.floor(toAsiaCost * Math.pow(1.1, toAsia));
     document.getElementById("toAsiaCost").innerHTML = accounting.formatMoney(asiaCost);
     revenueGeneration(toAsia, toAsiaRevenue, 'toAsiaRevenue');
-
 
     var europeCost = Math.floor(toEuropeCost * Math.pow(1.1, toEurope));
     document.getElementById("toEuropeCost").innerHTML = accounting.formatMoney(europeCost);
     revenueGeneration(toEurope, toEuropeRevenue, 'toEuropeRevenue');
 
-
     var americasCost = Math.floor(toAmericasCost * Math.pow(1.1, toAmericas));
     document.getElementById("toAmericasCost").innerHTML = accounting.formatMoney(americasCost);
     revenueGeneration(toAmericas, toAmericasRevenue, 'toAmericasRevenue');
-
 
     var atlantisCost = Math.floor(toAtlantisCost * Math.pow(1.1, toIndia));
     document.getElementById("toAtlantisCost").innerHTML = accounting.formatMoney(atlantisCost);
@@ -120,9 +116,16 @@ function coinClick(number) {
     document.getElementById("coins").innerHTML = accounting.formatMoney(coins);
 };
 
-function revenueGeneration(region, revenue, revenueDiv) {    
-    new_revenue = Math.floor(revenue * Math.pow(1.1, region));    
-    coins = coins + new_revenue;
+function revenueGeneration(region, revenue, revenueDiv) {
+        
+    if ( region > 0 ) {
+        new_revenue = Math.floor(revenue * Math.pow(1.1, region));    
+        coins = coins + new_revenue;
+    } 
+    else {
+        new_revenue = 0;
+    }
+    
     document.getElementById("coins").innerHTML = accounting.formatMoney(coins);
     document.getElementById( revenueDiv ).innerHTML = accounting.formatMoney(new_revenue);
 }
