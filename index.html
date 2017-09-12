@@ -23,11 +23,11 @@
 <body>
 
     <div class="container">
-        
+
         <div class="row">
             <section id="banner">
                 <h1>Corporate Take Over</h1>
-            </section> 
+            </section>
         </div>
 
         <div class="row">
@@ -39,95 +39,89 @@
             <div class="one-half column" style="margin-top: 5%">
                 <button onClick="coinClick(0.5)">Work</button>
             </div>
-    
+
         </div>
 
         <div class="row">
             <div class="one-third column" style="margin-top: 10%">
                 <h2>India</h2>
                 <h5>
-                    Companies: <span id="toIndia">0</span><br /> 
-                    Cost: <span id="toIndiaCost">10</span>M
+                    Companies: <span id="toIndia">0</span><br /> Cost: <span id="toIndiaCost">10</span>M
                 </h5>
-                
+
                 <button onClick="expandIndia()">Take Over</button>
             </div>
-            
+
             <div class="one-third column" style="margin-top: 10%">
                 <h2>Africa</h2>
                 <h5>
-                    Companies: <span id="toAfrica">0</span><br /> 
-                    Cost: <span id="toAfricaCost">1000</span>M
+                    Companies: <span id="toAfrica">0</span><br /> Cost: <span id="toAfricaCost">1000</span>M
                 </h5>
-                
+
                 <button onClick="expandAfrica()">Take Over</button>
             </div>
-            
+
             <div class="one-third column" style="margin-top: 10%">
                 <h2>Asia Pacific</h2>
                 <h5>
-                    Companies: <span id="toAsia">0</span><br /> 
-                    Cost: <span id="toAsiaCost">100000</span>M
+                    Companies: <span id="toAsia">0</span><br /> Cost: <span id="toAsiaCost">100000</span>M
                 </h5>
-                
+
                 <button onClick="expandAsia()">Take Over</button>
             </div>
-            
+
         </div>
-        
+
         <div class="row">
             <div class="one-third column" style="margin-top: 10%">
                 <h2>Europe</h2>
                 <h5>
-                    Companies: <span id="toEurope">0</span><br /> 
-                    Cost: <span id="toEuropeCost">10000000</span>M
+                    Companies: <span id="toEurope">0</span><br /> Cost: <span id="toEuropeCost">10000000</span>M
                 </h5>
-                
+
                 <button onClick="expandEurope()">Take Over</button>
             </div>
-            
+
             <div class="one-third column" style="margin-top: 10%">
                 <h2>Americas</h2>
                 <h5>
-                    Companies: <span id="toAmericas">0</span><br /> 
-                    Cost: <span id="toAmericasCost">1000000000</span>M
+                    Companies: <span id="toAmericas">0</span><br /> Cost: <span id="toAmericasCost">1000000000</span>M
                 </h5>
-                
+
                 <button onClick="expandAmericas()">Take Over</button>
             </div>
-            
+
             <div class="one-third column" style="margin-top: 10%">
                 <h2>Atlantis</h2>
                 <h5>
-                    Companies: <span id="toAtlantis">0</span><br /> 
-                    Cost: <span id="toAtlantisCost">100000000000</span>M
+                    Companies: <span id="toAtlantis">0</span><br /> Cost: <span id="toAtlantisCost">100000000000</span>M
                 </h5>
-                
+
                 <button onClick="expandAtlantis()">Take Over</button>
             </div>
-            
+
         </div>
-        
+
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.js"></script>
-    
+
     <script type="application/javascript">
         accounting.settings = {
             currency: {
-                symbol : "&euro;",   // default currency symbol is '$'
+                symbol: "&euro;", // default currency symbol is '$'
                 format: "%s%v", // controls output: %s = symbol, %v = value/number (can be object: see below)
-                decimal : ".",  // decimal point separator
-                thousand: ",",  // thousands separator
-                precision : 2   // decimal places
+                decimal: ".", // decimal point separator
+                thousand: ",", // thousands separator
+                precision: 2 // decimal places
             },
             number: {
-                precision : 0,  // default precision on numbers is 0
+                precision: 0, // default precision on numbers is 0
                 thousand: ",",
-                decimal : "."
+                decimal: "."
             }
         }
     </script>
-    
+
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 
