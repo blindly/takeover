@@ -14,6 +14,14 @@ let toEuropeCost = 10000;
 let toAmericasCost = 100000;
 let toAtlantisCost = 1000000;
 
+let toIndiaRevenue = 2;
+let toAfricaRevenue = 4;
+let toAsiaRevenue = 6;
+let toEuropeRevenue = 8;
+let toAmericasRevenue = 10;
+let toAtlantisRevenue = 12;
+
+
 let work = 0.5;
 
 let savegame = null;
@@ -55,21 +63,32 @@ try {
 try {
     var indiaCost = Math.floor(toIndiaCost * Math.pow(1.1, toIndia));
     document.getElementById("toIndiaCost").innerHTML = accounting.formatMoney(indiaCost);
+    revenueGeneration(toIndia, toIndiaRevenue, 'toIndiaRevenue');    
 
     var africaCost = Math.floor(toAfricaCost * Math.pow(1.1, toAfrica));
     document.getElementById("toAfricaCost").innerHTML = accounting.formatMoney(africaCost);
+    revenueGeneration(toAfrica, toAfricaRevenue, 'toAfricaRevenue');
+
 
     var asiaCost = Math.floor(toAsiaCost * Math.pow(1.1, toAsia));
     document.getElementById("toAsiaCost").innerHTML = accounting.formatMoney(asiaCost);
+    revenueGeneration(toAsia, toAsiaRevenue, 'toAsiaRevenue');
+
 
     var europeCost = Math.floor(toEuropeCost * Math.pow(1.1, toEurope));
     document.getElementById("toEuropeCost").innerHTML = accounting.formatMoney(europeCost);
+    revenueGeneration(toEurope, toEuropeRevenue, 'toEuropeRevenue');
+
 
     var americasCost = Math.floor(toAmericasCost * Math.pow(1.1, toAmericas));
     document.getElementById("toAmericasCost").innerHTML = accounting.formatMoney(americasCost);
+    revenueGeneration(toAmericas, toAmericasRevenue, 'toAmericasRevenue');
+
 
     var atlantisCost = Math.floor(toAtlantisCost * Math.pow(1.1, toIndia));
     document.getElementById("toAtlantisCost").innerHTML = accounting.formatMoney(atlantisCost);
+    revenueGeneration(toAtlantis, toAtlantisRevenue, 'toAtlantisRevenue');
+
 } catch (error) {
     console.log(error);
 }
@@ -100,6 +119,13 @@ function coinClick(number) {
     coins = coins + number;
     document.getElementById("coins").innerHTML = accounting.formatMoney(coins);
 };
+
+function revenueGeneration(region, revenue, revenueDiv) {    
+    new_revenue = Math.floor(revenue * Math.pow(1.1, region));    
+    coins = coins + new_revenue;
+    document.getElementById("coins").innerHTML = accounting.formatMoney(coins);
+    document.getElementById( revenueDiv ).innerHTML = accounting.formatMoney(new_revenue);
+}
 
 function expandIndia() {
     var cost = Math.floor(toIndiaCost * Math.pow(1.1, toIndia)); //works out the cost of this cursor
@@ -188,12 +214,13 @@ function expandAtlantis() {
 window.setInterval(function () {
     //console.log(save);
 
-    coinClick(toIndia);
-    coinClick(toAfrica);
-    coinClick(toAsia);
-    coinClick(toEurope);
-    coinClick(toAmericas);
-    coinClick(toAtlantis);
+    revenueGeneration(toIndia, toIndiaRevenue, 'toIndiaRevenue');
+    revenueGeneration(toAfrica, toAfricaRevenue, 'toAfricaRevenue');
+    revenueGeneration(toAsia, toAsiaRevenue, 'toAsiaRevenue');
+    revenueGeneration(toEurope, toEuropeRevenue, 'toEuropeRevenue');
+    revenueGeneration(toAmericas, toAmericasRevenue, 'toAmericasRevenue');
+    revenueGeneration(toAtlantis, toAtlantisRevenue, 'toAtlantisRevenue');
+
 
 }, 5000);
 
