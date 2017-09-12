@@ -27,7 +27,7 @@ catch (error) {
 
 try {
     if (typeof savegame.coins !== "undefined") coins = savegame.coins;
-    document.getElementById("coins").innerHTML = coins;
+    document.getElementById("coins").innerHTML = accounting.formatMoney(coins);
     
 } 
 
@@ -60,22 +60,22 @@ catch (error) {
 
 try {
     var indiaCost = Math.floor(toIndiaCost * Math.pow(1.1, toIndia  ));
-    document.getElementById( "toIndiaCost" ).innerHTML = indiaCost;
+    document.getElementById( "toIndiaCost" ).innerHTML = accounting.formatMoney(indiaCost);
     
     var africaCost = Math.floor(toAfricaCost * Math.pow(1.1, toAfrica  ));
-    document.getElementById( "toAfricaCost" ).innerHTML = africaCost;
+    document.getElementById( "toAfricaCost" ).innerHTML = accounting.formatMoney(africaCost);
 
     var asiaCost = Math.floor(toAsiaCost * Math.pow(1.1, toAsia  ));
-    document.getElementById( "toAsiaCost" ).innerHTML = asiaCost;
+    document.getElementById( "toAsiaCost" ).innerHTML = accounting.formatMoney(asiaCost);
     
     var europeCost = Math.floor(toEuropeCost * Math.pow(1.1, toEurope  ));
-    document.getElementById( "toEuropeCost" ).innerHTML = europeCost;
+    document.getElementById( "toEuropeCost" ).innerHTML = accounting.formatMoney(europeCost);
     
     var americasCost = Math.floor(toAmericasCost * Math.pow(1.1, toAmericas  ));
-    document.getElementById( "toAmericasCost" ).innerHTML = americasCost;
+    document.getElementById( "toAmericasCost" ).innerHTML = accounting.formatMoney(americasCost);
     
     var atlantisCost = Math.floor(toAtlantisCost * Math.pow(1.1, toIndia  ));
-    document.getElementById( "toAtlantisCost" ).innerHTML = atlantisCost;
+    document.getElementById( "toAtlantisCost" ).innerHTML = accounting.formatMoney(atlantisCost);
 } 
 
 catch (error) {
@@ -96,7 +96,7 @@ console.log(save);
 
 function coinClick(number) {
     coins = coins + number;
-    document.getElementById("coins").innerHTML = coins;
+    document.getElementById("coins").innerHTML = accounting.formatMoney(coins);
 };
 
 function expandIndia() {
@@ -106,11 +106,11 @@ function expandIndia() {
         coins = coins - cost;                              //removes the cookies spent
         
         document.getElementById( "toIndia" ).innerHTML = toIndia;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = coins;    //updates the number of cookies for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
     };
     
     var nextCost = Math.floor(toIndiaCost * Math.pow(1.1, toIndia  ));    //works out the cost of the next cursor
-    document.getElementById( "toIndiaCost" ).innerHTML = nextCost;  //updates the cursor cost for the user
+    document.getElementById( "toIndiaCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
 };
 
 function expandAfrica() {
@@ -120,11 +120,11 @@ function expandAfrica() {
         coins = coins - cost;                              //removes the cookies spent
         
         document.getElementById( "toAfrica" ).innerHTML = toAfrica;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = coins;    //updates the number of cookies for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
     };
     
     var nextCost = Math.floor(toAfricaCost * Math.pow(1.1, toIndia  ));    //works out the cost of the next cursor
-    document.getElementById( "toAfricaCost" ).innerHTML = nextCost;  //updates the cursor cost for the user
+    document.getElementById( "toAfricaCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
 };
 
 function expandAsia() {
@@ -134,11 +134,11 @@ function expandAsia() {
         coins = coins - cost;                              //removes the cookies spent
         
         document.getElementById( "toAsia" ).innerHTML = toAsia;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = coins;    //updates the number of cookies for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
     };
     
     var nextCost = Math.floor(toAsiaCost * Math.pow(1.1, toAsia  ));    //works out the cost of the next cursor
-    document.getElementById( "toAsiaCost" ).innerHTML = nextCost;  //updates the cursor cost for the user
+    document.getElementById( "toAsiaCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
 };
 
 function expandEurope() {
@@ -148,11 +148,11 @@ function expandEurope() {
         coins = coins - cost;                              //removes the cookies spent
         
         document.getElementById( "toEurope" ).innerHTML = toEurope;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = coins;    //updates the number of cookies for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
     };
     
     var nextCost = Math.floor(toEuropeCost * Math.pow(1.1, toEurope  ));    //works out the cost of the next cursor
-    document.getElementById( "toEuropeCost" ).innerHTML = nextCost;  //updates the cursor cost for the user
+    document.getElementById( "toEuropeCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
 };
 
 function expandAmericas() {
@@ -162,11 +162,11 @@ function expandAmericas() {
         coins = coins - cost;                              //removes the cookies spent
         
         document.getElementById( "toAmericas" ).innerHTML = toAmericas;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = coins;    //updates the number of cookies for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
     };
     
     var nextCost = Math.floor(toAmericasCost * Math.pow(1.1, toAmericas  ));    //works out the cost of the next cursor
-    document.getElementById( "toAmericasCost" ).innerHTML = nextCost;  //updates the cursor cost for the user
+    document.getElementById( "toAmericasCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
 };
 
 function expandAtlantis() {
@@ -176,11 +176,11 @@ function expandAtlantis() {
         coins = coins - cost;                              //removes the cookies spent
         
         document.getElementById( "toAtlantis" ).innerHTML = toAtlantis;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = coins;    //updates the number of cookies for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
     };
     
     var nextCost = Math.floor(toAtlantisCost * Math.pow(1.1, toAtlantis  ));    //works out the cost of the next cursor
-    document.getElementById( "toAtlantisCost" ).innerHTML = nextCost;  //updates the cursor cost for the user
+    document.getElementById( "toAtlantisCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
 };
 
 window.setInterval(function () {
