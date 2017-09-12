@@ -34,10 +34,24 @@
 
             <div class="one-half column" style="margin-top: 5%">
                 <h2>Credits: <span id="coins">0</span>M</h2>
+                <br><br>
+                
+                <p>Memo: </p>
+                <p>Welcome. You are the new CTO. You're here to turn the company around. We want you to make the company profitable.</p>
+                
+                <p>Work as much as you can. Once you start buying companies, they will begin generating profits. Our goal is total world takeover.</p>
+                
+                <p>If you need a break, you can leave and we'll save your work and you can continue when you return.</p>
+                
+                <p>If you fail, the company will fail. We are counting on you. </p>
+                <p>-- Management</p>
+                
+                <br><br>
+                <button onClick="coinClick(0.5)">Work</button>
             </div>
 
-            <div class="one-half column" style="margin-top: 5%">
-                <button onClick="coinClick(0.5)">Work</button>
+            <div id="chart" class="one-half column" style="margin-top: 5%">
+                
             </div>
 
         </div>
@@ -120,9 +134,15 @@
                 decimal: "."
             }
         }
+
     </script>
 
-    <script type="text/javascript" src="js/main.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Numeric JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+    <!-- Main -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>

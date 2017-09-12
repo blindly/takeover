@@ -20,26 +20,21 @@ let savegame = null;
 
 try {
     savegame = JSON.parse(localStorage.getItem("save"));
-}
-catch (error) {
+} catch (error) {
     console.log(error);
 }
 
 try {
     if (typeof savegame.coins !== "undefined") coins = savegame.coins;
     document.getElementById("coins").innerHTML = accounting.formatMoney(coins);
-    
-} 
 
-catch (error) {
+} catch (error) {
     document.getElementById("coins").innerHTML = accounting.formatMoney(0);
     console.log(error);
 }
 
 
 try {
-
-        
     if (typeof savegame.toIndia !== "undefined") toIndia = savegame.toIndia;
     if (typeof savegame.toAfrica !== "undefined") toAfrica = savegame.toAfrica;
     if (typeof savegame.toAsia !== "undefined") toAsia = savegame.toAsia;
@@ -47,39 +42,35 @@ try {
     if (typeof savegame.toAmericas !== "undefined") toAmericas = savegame.toAmericas;
     if (typeof savegame.toAtlantis !== "undefined") toAtlantis = savegame.toAtlantis;
 
-    document.getElementById( "toIndia" ).innerHTML = toIndia;
-    document.getElementById( "toAfrica" ).innerHTML = toAfrica;
-    document.getElementById( "toAsia" ).innerHTML = toAsia;
-    document.getElementById( "toEurope" ).innerHTML = toEurope;
-    document.getElementById( "toAmericas" ).innerHTML = toAmericas;
-    document.getElementById( "toAtlantis" ).innerHTML = toAtlantis;
-} 
-
-catch (error) {
+    document.getElementById("toIndia").innerHTML = toIndia;
+    document.getElementById("toAfrica").innerHTML = toAfrica;
+    document.getElementById("toAsia").innerHTML = toAsia;
+    document.getElementById("toEurope").innerHTML = toEurope;
+    document.getElementById("toAmericas").innerHTML = toAmericas;
+    document.getElementById("toAtlantis").innerHTML = toAtlantis;
+} catch (error) {
     console.log(error);
 }
 
 try {
-    var indiaCost = Math.floor(toIndiaCost * Math.pow(1.1, toIndia  ));
-    document.getElementById( "toIndiaCost" ).innerHTML = accounting.formatMoney(indiaCost);
-    
-    var africaCost = Math.floor(toAfricaCost * Math.pow(1.1, toAfrica  ));
-    document.getElementById( "toAfricaCost" ).innerHTML = accounting.formatMoney(africaCost);
+    var indiaCost = Math.floor(toIndiaCost * Math.pow(1.1, toIndia));
+    document.getElementById("toIndiaCost").innerHTML = accounting.formatMoney(indiaCost);
 
-    var asiaCost = Math.floor(toAsiaCost * Math.pow(1.1, toAsia  ));
-    document.getElementById( "toAsiaCost" ).innerHTML = accounting.formatMoney(asiaCost);
-    
-    var europeCost = Math.floor(toEuropeCost * Math.pow(1.1, toEurope  ));
-    document.getElementById( "toEuropeCost" ).innerHTML = accounting.formatMoney(europeCost);
-    
-    var americasCost = Math.floor(toAmericasCost * Math.pow(1.1, toAmericas  ));
-    document.getElementById( "toAmericasCost" ).innerHTML = accounting.formatMoney(americasCost);
-    
-    var atlantisCost = Math.floor(toAtlantisCost * Math.pow(1.1, toIndia  ));
-    document.getElementById( "toAtlantisCost" ).innerHTML = accounting.formatMoney(atlantisCost);
-} 
+    var africaCost = Math.floor(toAfricaCost * Math.pow(1.1, toAfrica));
+    document.getElementById("toAfricaCost").innerHTML = accounting.formatMoney(africaCost);
 
-catch (error) {
+    var asiaCost = Math.floor(toAsiaCost * Math.pow(1.1, toAsia));
+    document.getElementById("toAsiaCost").innerHTML = accounting.formatMoney(asiaCost);
+
+    var europeCost = Math.floor(toEuropeCost * Math.pow(1.1, toEurope));
+    document.getElementById("toEuropeCost").innerHTML = accounting.formatMoney(europeCost);
+
+    var americasCost = Math.floor(toAmericasCost * Math.pow(1.1, toAmericas));
+    document.getElementById("toAmericasCost").innerHTML = accounting.formatMoney(americasCost);
+
+    var atlantisCost = Math.floor(toAtlantisCost * Math.pow(1.1, toIndia));
+    document.getElementById("toAtlantisCost").innerHTML = accounting.formatMoney(atlantisCost);
+} catch (error) {
     console.log(error);
 }
 
@@ -93,7 +84,17 @@ var save = {
     toAtlantis: toAtlantis
 }
 
-console.log(save);
+// Chart
+
+function chart() {
+    var data = [{
+        values: [toIndia, toAfrica, toAsia, toEurope, toAmericas, toAtlantis],
+        labels: ['India', 'Africa', 'Asia', 'Europe', 'Americas', 'Atlantis'],
+        type: 'pie'
+    }];
+
+    Plotly.newPlot('chart', data);
+}
 
 function coinClick(number) {
     coins = coins + number;
@@ -101,87 +102,87 @@ function coinClick(number) {
 };
 
 function expandIndia() {
-    var cost = Math.floor(toIndiaCost * Math.pow(1.1, toIndia));      //works out the cost of this cursor
-    if (coins >= cost) {                                   //checks that the player can afford the cursor
-        toIndia = toIndia + 1;                                     //increases number of cursors
-        coins = coins - cost;                              //removes the cookies spent
-        
-        document.getElementById( "toIndia" ).innerHTML = toIndia;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
+    var cost = Math.floor(toIndiaCost * Math.pow(1.1, toIndia)); //works out the cost of this cursor
+    if (coins >= cost) { //checks that the player can afford the cursor
+        toIndia = toIndia + 1; //increases number of cursors
+        coins = coins - cost; //removes the cookies spent
+
+        document.getElementById("toIndia").innerHTML = toIndia; //updates the number of cursors for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins); //updates the number of cookies for the user
     };
-    
-    var nextCost = Math.floor(toIndiaCost * Math.pow(1.1, toIndia  ));    //works out the cost of the next cursor
-    document.getElementById( "toIndiaCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
+
+    var nextCost = Math.floor(toIndiaCost * Math.pow(1.1, toIndia)); //works out the cost of the next cursor
+    document.getElementById("toIndiaCost").innerHTML = accounting.formatMoney(nextCost); //updates the cursor cost for the user
 };
 
 function expandAfrica() {
-    var cost = Math.floor(toAfricaCost * Math.pow(1.1, toAfrica));      //works out the cost of this cursor
-    if (coins >= cost) {                                   //checks that the player can afford the cursor
-        toAfrica = toAfrica + 1;                                     //increases number of cursors
-        coins = coins - cost;                              //removes the cookies spent
-        
-        document.getElementById( "toAfrica" ).innerHTML = toAfrica;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
+    var cost = Math.floor(toAfricaCost * Math.pow(1.1, toAfrica)); //works out the cost of this cursor
+    if (coins >= cost) { //checks that the player can afford the cursor
+        toAfrica = toAfrica + 1; //increases number of cursors
+        coins = coins - cost; //removes the cookies spent
+
+        document.getElementById("toAfrica").innerHTML = toAfrica; //updates the number of cursors for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins); //updates the number of cookies for the user
     };
-    
-    var nextCost = Math.floor(toAfricaCost * Math.pow(1.1, toIndia  ));    //works out the cost of the next cursor
-    document.getElementById( "toAfricaCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
+
+    var nextCost = Math.floor(toAfricaCost * Math.pow(1.1, toIndia)); //works out the cost of the next cursor
+    document.getElementById("toAfricaCost").innerHTML = accounting.formatMoney(nextCost); //updates the cursor cost for the user
 };
 
 function expandAsia() {
-    var cost = Math.floor(toAsiaCost * Math.pow(1.1, toAsia));      //works out the cost of this cursor
-    if (coins >= cost) {                                   //checks that the player can afford the cursor
-        toAsia = toAsia + 1;                                     //increases number of cursors
-        coins = coins - cost;                              //removes the cookies spent
-        
-        document.getElementById( "toAsia" ).innerHTML = toAsia;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
+    var cost = Math.floor(toAsiaCost * Math.pow(1.1, toAsia)); //works out the cost of this cursor
+    if (coins >= cost) { //checks that the player can afford the cursor
+        toAsia = toAsia + 1; //increases number of cursors
+        coins = coins - cost; //removes the cookies spent
+
+        document.getElementById("toAsia").innerHTML = toAsia; //updates the number of cursors for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins); //updates the number of cookies for the user
     };
-    
-    var nextCost = Math.floor(toAsiaCost * Math.pow(1.1, toAsia  ));    //works out the cost of the next cursor
-    document.getElementById( "toAsiaCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
+
+    var nextCost = Math.floor(toAsiaCost * Math.pow(1.1, toAsia)); //works out the cost of the next cursor
+    document.getElementById("toAsiaCost").innerHTML = accounting.formatMoney(nextCost); //updates the cursor cost for the user
 };
 
 function expandEurope() {
-    var cost = Math.floor(toEuropeCost * Math.pow(1.1, toEurope));      //works out the cost of this cursor
-    if (coins >= cost) {                                   //checks that the player can afford the cursor
-        toEurope = toEurope + 1;                                     //increases number of cursors
-        coins = coins - cost;                              //removes the cookies spent
-        
-        document.getElementById( "toEurope" ).innerHTML = toEurope;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
+    var cost = Math.floor(toEuropeCost * Math.pow(1.1, toEurope)); //works out the cost of this cursor
+    if (coins >= cost) { //checks that the player can afford the cursor
+        toEurope = toEurope + 1; //increases number of cursors
+        coins = coins - cost; //removes the cookies spent
+
+        document.getElementById("toEurope").innerHTML = toEurope; //updates the number of cursors for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins); //updates the number of cookies for the user
     };
-    
-    var nextCost = Math.floor(toEuropeCost * Math.pow(1.1, toEurope  ));    //works out the cost of the next cursor
-    document.getElementById( "toEuropeCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
+
+    var nextCost = Math.floor(toEuropeCost * Math.pow(1.1, toEurope)); //works out the cost of the next cursor
+    document.getElementById("toEuropeCost").innerHTML = accounting.formatMoney(nextCost); //updates the cursor cost for the user
 };
 
 function expandAmericas() {
-    var cost = Math.floor(toAmericasCost * Math.pow(1.1, toAmericas));      //works out the cost of this cursor
-    if (coins >= cost) {                                   //checks that the player can afford the cursor
-        toAmericas = toAmericas + 1;                                     //increases number of cursors
-        coins = coins - cost;                              //removes the cookies spent
-        
-        document.getElementById( "toAmericas" ).innerHTML = toAmericas;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
+    var cost = Math.floor(toAmericasCost * Math.pow(1.1, toAmericas)); //works out the cost of this cursor
+    if (coins >= cost) { //checks that the player can afford the cursor
+        toAmericas = toAmericas + 1; //increases number of cursors
+        coins = coins - cost; //removes the cookies spent
+
+        document.getElementById("toAmericas").innerHTML = toAmericas; //updates the number of cursors for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins); //updates the number of cookies for the user
     };
-    
-    var nextCost = Math.floor(toAmericasCost * Math.pow(1.1, toAmericas  ));    //works out the cost of the next cursor
-    document.getElementById( "toAmericasCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
+
+    var nextCost = Math.floor(toAmericasCost * Math.pow(1.1, toAmericas)); //works out the cost of the next cursor
+    document.getElementById("toAmericasCost").innerHTML = accounting.formatMoney(nextCost); //updates the cursor cost for the user
 };
 
 function expandAtlantis() {
-    var cost = Math.floor(toAtlantisCost * Math.pow(1.1, toAtlantis));      //works out the cost of this cursor
-    if (coins >= cost) {                                   //checks that the player can afford the cursor
-        toAtlantis = toAtlantis + 1;                                     //increases number of cursors
-        coins = coins - cost;                              //removes the cookies spent
-        
-        document.getElementById( "toAtlantis" ).innerHTML = toAtlantis;    //updates the number of cursors for the user
-        document.getElementById('coins').innerHTML = accounting.formatMoney(coins);    //updates the number of cookies for the user
+    var cost = Math.floor(toAtlantisCost * Math.pow(1.1, toAtlantis)); //works out the cost of this cursor
+    if (coins >= cost) { //checks that the player can afford the cursor
+        toAtlantis = toAtlantis + 1; //increases number of cursors
+        coins = coins - cost; //removes the cookies spent
+
+        document.getElementById("toAtlantis").innerHTML = toAtlantis; //updates the number of cursors for the user
+        document.getElementById('coins').innerHTML = accounting.formatMoney(coins); //updates the number of cookies for the user
     };
-    
-    var nextCost = Math.floor(toAtlantisCost * Math.pow(1.1, toAtlantis  ));    //works out the cost of the next cursor
-    document.getElementById( "toAtlantisCost" ).innerHTML = accounting.formatMoney(nextCost);  //updates the cursor cost for the user
+
+    var nextCost = Math.floor(toAtlantisCost * Math.pow(1.1, toAtlantis)); //works out the cost of the next cursor
+    document.getElementById("toAtlantisCost").innerHTML = accounting.formatMoney(nextCost); //updates the cursor cost for the user
 };
 
 window.setInterval(function () {
@@ -193,12 +194,13 @@ window.setInterval(function () {
     coinClick(toEurope);
     coinClick(toAmericas);
     coinClick(toAtlantis);
+
 }, 5000);
 
 window.setInterval(function () {
 
     //console.log("I save now");
-    
+
     save = {
         coins: coins,
         toIndia: toIndia,
@@ -208,8 +210,11 @@ window.setInterval(function () {
         toAmericas: toAmericas,
         toAtlantis: toAtlantis
     }
-    
+
     //console.log(save);
 
-      localStorage.setItem("save", JSON.stringify(save));
+    chart();
+
+
+    localStorage.setItem("save", JSON.stringify(save));
 }, 10000);
