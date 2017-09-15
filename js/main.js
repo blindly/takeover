@@ -162,7 +162,7 @@ function expandAfrica() {
         document.getElementById('coins').innerHTML = accounting.formatMoney(coins); //updates the number of cookies for the user
     };
 
-    var nextCost = Math.floor(toAfricaCost * Math.pow(1.1, toIndia)); //works out the cost of the next cursor
+    var nextCost = Math.floor(toAfricaCost * Math.pow(1.1, toAfrica)); //works out the cost of the next cursor
     document.getElementById("toAfricaCost").innerHTML = accounting.formatMoney(nextCost); //updates the cursor cost for the user
 };
 
